@@ -1,0 +1,24 @@
+{% if current_user.is_authenticated %}
+
+{%extends'./client_view/components/sidebar.html'%}
+
+{%block content%}
+
+<h1> This is the client Portal, the client should be doing what he wants in here.  </h1>
+
+<h2>The feature required will be as follows:  </h2>
+
+<h3>   
+    <ul>
+        <li> Create a new pickup > it will lead to a form</li>
+        <li> Track your current pickup it should be a list of the pickup that will lead to a package details</li>
+        <li> Transactions > which will lead to a transaction history and wallet balance with withdraw button</li>
+        <li> Something else that should be added, and I don't remember it. </li>   
+    </ul>
+
+
+
+</h3>
+
+{% endblock %}
+{% endif %}
