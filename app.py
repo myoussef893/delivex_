@@ -5,17 +5,13 @@ from models import User
 login_manager = LoginManager()
 
 app = Flask(__name__)
-app.config['SECRET_KEY']= 'SECRET'
-login_manager.init_app(app)
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+app.config['SECRET_KEY']= '1q2w3e4r5t6y7u8i9o0p'
 
 
 
 
 from routes import * 
+from auth import * 
 
 
 

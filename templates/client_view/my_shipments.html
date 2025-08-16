@@ -1,0 +1,79 @@
+{% extends './client_view/components/sidebar.html' %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <!-- Card wrapper -->
+    <div class="card shadow rounded-3">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">📦 My Shipments</h5>
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover table-striped mb-0 align-middle">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Tracking Number</th>
+                            <th>Status</th>
+                            <th>Sender → Receiver</th>
+                            <th>From → To</th>
+                            <th>Courier</th>
+                            <th>Weight</th>
+                            <th>Cost</th>
+                            <th>Date</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for shipment in shipments %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>
+                                <span class="badge bg-info text-dark">
+                                    {{ shipment.tracking_number }}
+                                </span>
+                            </td>
+                            <td>
+                                {% if shipment.status == 'Pending' %}
+                                    <span class="badge bg-warning text-dark">Pending</span>
+                                {% elif shipment.status == 'In Transit' %}
+                                    <span class="badge bg-primary">In Transit</span>
+                                {% elif shipment.status == 'Delivered' %}
+                                    <span class="badge bg-success">Delivered</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">{{ shipment.status }}</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <strong>{{ shipment.sender_name }}</strong> → 
+                                <strong>{{ shipment.receiver_name }}</strong>
+                            </td>
+                            <td>
+                                {{ shipment.pickup_city }} → {{ shipment.delivery_city }}
+                            </td>
+                            <td>{{ shipment.courier_type }}</td>
+                            <td>{{ shipment.package_weight }} kg</td>
+                            <td>${{ "%.2f"|format(shipment.shipment_cost or 0) }}</td>
+                            <td>
+                                {{ shipment.shipment_date.strftime('%Y-%m-%d') if shipment.shipment_date else 'N/A' }}
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ url_for('track_shipment', tracking_number=shipment.tracking_number) }}" class="btn btn-sm btn-warning">Track</a>
+                                <a href="{{ url_for('inquire_shipment', tracking_number=shipment.tracking_number) }}" class="btn btn-sm btn-outline-primary">Inquire</a>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="10" class="text-center text-muted p-4">
+                                No shipments found.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -138,7 +138,7 @@ egyptian_cities = [
 ]
 ## Login 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
 
@@ -155,27 +155,23 @@ class SignupForm(FlaskForm):
 ## New Package 
 class NewPackageForm(FlaskForm): 
     pickup_address = StringField('Pickup Address', validators=[DataRequired()])
-    pickup_city = SelectField('Pickup City', choices=egyptian_cities, validators=[DataRequired()])
-    
+    pickup_city = SelectField('Pickup City', choices=egyptian_cities, validators=[DataRequired()])    
     delivery_address = StringField('Delivery Address', validators=[DataRequired()])
     delivery_city = SelectField('Delivery City',choices=egyptian_cities, validators=[DataRequired()])
-
     sender_name = StringField('Sender Name', validators=[DataRequired()])
     receiver_name = StringField('Receiver Name', validators=[DataRequired()])
-    
     sender_phone = IntegerField('Sender Phone', validators=[DataRequired()])
     receiver_phone = IntegerField('Receiver Phone', validators=[DataRequired()])
-    
     special_notes = StringField('Notes/Comment')
-    
     courier_type = SelectField('Select Courier Type', choices=['Foot','Car','Truck','Motor Cycle'], validators=[DataRequired()])
-
     package_weight = IntegerField('Package Weight', validators=[DataRequired()])
-    
     submit = SubmitField('Submit')
-    
-    
-    
+
+## Track Shipment:
+
+class TrackForm(FlaskForm):
+    tracking_number = StringField('Tracking Number', validators=[DataRequired()])
+    submit = SubmitField('Track')
 
 ## Inquiry 
 

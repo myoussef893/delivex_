@@ -17,17 +17,13 @@
  */
 
 body {
-  text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
-  /* Remove background-image from body directly */
-  /* background-image: url('../static/img/warehouse-background.jpg'); */
-  /* background-size: cover; */
-  /* background-position: center center; */
-  /* background-repeat: no-repeat; */
-
-  /* Set body to be a positioning context for the pseudo-element */
-  position: relative;
-  overflow: hidden; /* Hide any overflow from blurring */
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.6), 
+        rgba(0, 0, 0, 0.6)
+    ), 
+    url("../static/img/warehouse-background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
 }
 
 /* Pseudo-element for the background image, dimming, and blurring */

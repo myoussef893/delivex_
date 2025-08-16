@@ -1,0 +1,72 @@
+{% extends './client_view/components/sidebar.html' %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+    <div class="row g-4">
+
+        <!-- Wallet Balance -->
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">Wallet Balance</h6>
+                    <h3 class="fw-bold text-primary">{{ wallet_balance }} EGP</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shipments this month -->
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">Shipments This Month</h6>
+                    <h3 class="fw-bold text-success">{{ total_shipments_month }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delivered -->
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">Delivered</h6>
+                    <h3 class="fw-bold text-success">{{ total_delivered }}</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- En Route -->
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">En Route</h6>
+                    <h3 class="fw-bold text-warning">{{ total_enroute }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second row -->
+    <div class="row g-4 mt-2">
+        <!-- Total Collected -->
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">Total Amount Collected</h6>
+                    <h3 class="fw-bold text-primary">{{ total_collected }} EGP</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Fees -->
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body">
+                    <h6 class="card-title text-muted">Total Fees</h6>
+                    <h3 class="fw-bold text-danger">{{ total_fees }} EGP</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -3,8 +3,7 @@ from sqlalchemy.orm import sessionmaker,relationship
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 from flask_login import UserMixin
-
-
+from random import randint
 
 
 Base = declarative_base()
@@ -23,7 +22,7 @@ class Shipments(Base):
     __tablename__ = 'shipments'
     id = Column(Integer, primary_key=True)
     status = Column(String,default = 'Pending')
-    tracking_number = Column(String,unique=True)
+    tracking_number = Column(String,unique=True,default=str(randint(1000000000,9999999999)))
     pickup_address = Column(String)
     pickup_city = Column(String)
     delivery_address = Column(String)
@@ -37,14 +36,14 @@ class Shipments(Base):
     package_weight = Column(Float)
     collected_amount = Column(Float)
     shipment_cost = Column(Float)
-    shipment_date = Column(DateTime, default=datetime.utcnow)
+    shipment_date = Column(DateTime)
     shipment_status = Column(String)
     pickup_date = Column(DateTime)
-    delivery_date = Column(DateTime, default=datetime.utcnow)
-    warehouse_date= Column(DateTime, default=datetime.utcnow)
+    delivery_date = Column(DateTime)
+    warehouse_date= Column(DateTime)
     courier_type = Column(String)
     special_notes = Column(String)
-
+    user_email = Column(String)
 class Transaction(Base):
     __tablename__ = 'transactions'
 

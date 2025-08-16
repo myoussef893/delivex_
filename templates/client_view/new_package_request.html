@@ -1,11 +1,77 @@
-{% from 'bootstrap4/form.html' import render_form %}
-{% extends './client_view/components/sidebar.html'%}
+{% extends './client_view/components/sidebar.html' %}
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="card shadow rounded-3">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Create a New Shipment</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                {{ form.hidden_tag() }}
 
-{%block content%}
-    <form method='POST'>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.pickup_address.label(class="form-label") }}
+                        {{ form.pickup_address(class="form-control") }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.pickup_city.label(class="form-label") }}
+                        {{ form.pickup_city(class="form-control") }}
+                    </div>
+                </div>
 
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.delivery_address.label(class="form-label") }}
+                        {{ form.delivery_address(class="form-control") }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.delivery_city.label(class="form-label") }}
+                        {{ form.delivery_city(class="form-control") }}
+                    </div>
+                </div>
 
-    {{render_form(form)}}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.sender_name.label(class="form-label") }}
+                        {{ form.sender_name(class="form-control") }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.receiver_name.label(class="form-label") }}
+                        {{ form.receiver_name(class="form-control") }}
+                    </div>
+                </div>
 
-    </form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.sender_phone.label(class="form-label") }}
+                        {{ form.sender_phone(class="form-control") }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.receiver_phone.label(class="form-label") }}
+                        {{ form.receiver_phone(class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form.special_notes.label(class="form-label") }}
+                    {{ form.special_notes(class="form-control", rows="3") }}
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ form.courier_type.label(class="form-label") }}
+                        {{ form.courier_type(class="form-control") }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ form.package_weight.label(class="form-label") }}
+                        {{ form.package_weight(class="form-control") }}
+                    </div>
+                </div>
+
+                {{ form.submit(class="btn btn-primary btn-block mt-3") }}
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
